@@ -1,7 +1,7 @@
 {
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
-    "immutable-core": "1.1.2"
+    "immutable-core": "1.2.0"
   },
   "description": "Alternative interface for immutable-core",
   "devDependencies": {
