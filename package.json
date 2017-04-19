@@ -1,7 +1,7 @@
 {
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
-    "immutable-core": "1.2.17"
+    "lodash": "^4.17.4"
   },
   "description": "Alternative interface for immutable-core",
   "devDependencies": {
@@ -12,14 +12,14 @@
     "test": "test"
   },
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=7.6.0"
   },
   "license": "MIT",
   "main": "lib/immutable-ai.js",
   "name": "immutable-ai",
   "repository": "warncke/immutable-ai",
   "scripts": {
-    "test": "mocha --harmony-async-await"
+    "test": "mocha"
   },
-  "version": "0.0.14"
+  "version": "0.1.0"
 }
