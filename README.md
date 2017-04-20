@@ -81,16 +81,21 @@ module name.
 To be used with Immutable AI all other modules must be named like `fooModule`
 and addressed via the `module` namespace.
 
-## Seting a custom namespace
+## Seting a custom local namespace
 
     // set custom namespace with alias and module name postfix
-    ImmutableAI.localNamespaces.myNamespace = 'MyNamespace'
+    ImmutableAI.localNamespace('myNamespace', 'MyNamespace')
 
     // call fooMyNamespace.foo
     ai.myNamespace.foo.foo(...)
 
-To create a custom namespace add the namespace alias to the `localNamespaces`
-object with the postfix for the module name.
+A namespace is defined with an alias that will be used when calling methods and
+and postfix that will be appended to the module name in the call string in order
+to get the full Immutable Core module name.
+
+Both the alias and postfix must be strings with a positive length.
+
+Errors will be thrown on attempts to create an invalid local namespace.
 
 ## Invalid calling patterns
 

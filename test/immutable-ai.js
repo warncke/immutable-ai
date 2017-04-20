@@ -89,7 +89,7 @@ describe('immutable-ai', function () {
             }
         })
         // set custom namesapce
-        ImmutableAI.localNamespaces.myNamespace = 'MyNamespace'
+        ImmutableAI.localNamespace('myNamespace', 'MyNamespace')
         // create ImmutableAI instance
         var ai = ImmutableAI({session: session})
         // call bar method in fooMyNamespace
