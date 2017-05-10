@@ -10,9 +10,11 @@ with [immutable-app](https://www.npmjs.com/package/immutable-app) and
 ## Creating a new Immutable AI instance
 
     const ImmutableAI = require('immutable-ai')
-    const immutable = require('immutable-core')
+    const ImmutableCore = require('immutable-core')
+    const ImmutableCoreModel = require('immutable-core-model')
 
-    ImmutableAI.immutableCore(immutable)
+    ImmutableAI.immutableCore(ImmutableCore)
+    ImmutabelAI.immutableCoreModel(ImmutableCoreModel)
 
     immutable.module('barModule', {
         bar: function (args) {
@@ -62,9 +64,6 @@ The Immutable AI instance will always be identical to calling
     // call foo method on fooModule
     ai.module.foo.foo(...)
 
-    // perform a select on fooModel
-    ai.model.foo.select.by.id(...)
-
     // call the list method for fooController
     ai.controller.foo.list(...)
 
@@ -96,6 +95,21 @@ to get the full Immutable Core module name.
 Both the alias and postfix must be strings with a positive length.
 
 Errors will be thrown on attempts to create an invalid local namespace.
+
+## Accessing ImmutableCoreModels
+
+    // perform a select on fooModel
+    ai.model.foo.select.by.id(...)
+
+When `ai.model` is called it will return an ImmutableCoreModelLocal instance
+with the session set. The ImmutableCoreModelLocal instance can then be used to
+create, query, and select.
+
+## Access the session
+
+    var session = ai.session
+
+The session for the instance can be access via `ai.session`.
 
 ## Invalid calling patterns
 
