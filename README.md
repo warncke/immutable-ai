@@ -1,7 +1,14 @@
 # immutable-ai
 
-Immutable AI provides a convenient object oriented interface for
-[immutable-core](https://www.npmjs.com/package/immutable-core).
+Immutable AI provides a convenient object oriented facade for Immutable modules
+that are functional by design and require manually passing a session object
+between calls.
+
+Immutable AI can be used to call
+[Immutable Core](https://www.npmjs.com/package/immutable-core) methods, perform
+[Immutable Core Model](https://www.npmjs.com/package/immutable-core-model)
+queries and make HTTP requests using
+[Immutable HTTP Client](https://www.npmjs.com/package/immutable-http-client).
 
 Immutable AI can be used directly, as demonstrated here, but it is integrated
 with [immutable-app](https://www.npmjs.com/package/immutable-app) and
@@ -12,9 +19,11 @@ with [immutable-app](https://www.npmjs.com/package/immutable-app) and
     const ImmutableAI = require('immutable-ai')
     const ImmutableCore = require('immutable-core')
     const ImmutableCoreModel = require('immutable-core-model')
+    const ImmutableHttpClient = require('immutable-http-client')
 
     ImmutableAI.immutableCore(ImmutableCore)
     ImmutabelAI.immutableCoreModel(ImmutableCoreModel)
+    ImmutableAI.immutableHttpClient(ImmutableHttpClient)
 
     immutable.module('barModule', {
         bar: function (args) {
@@ -104,6 +113,16 @@ Errors will be thrown on attempts to create an invalid local namespace.
 When `ai.model` is called it will return an ImmutableCoreModelLocal instance
 with the session set. The ImmutableCoreModelLocal instance can then be used to
 create, query, and select.
+
+## Making HTTP requests
+
+    ai.http.get('http://immutable.ai')
+
+`ai.http` can be used to call any Immutable HTTP Client request method: delete,
+get, post, put and request.
+
+The arguments will be passed to the underlying Immutable HTTP Client method and
+the current session object will be added if it is not set in the arguments.
 
 ## Access the session
 

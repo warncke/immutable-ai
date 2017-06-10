@@ -11,8 +11,9 @@ describe('immutable-ai', function () {
     }
 
     beforeEach(function () {
-        // reset immutable core
+        // reset
         ImmutableAI.immutableCore({})
+        ImmutableAI.immutableHttpClient({})
     })
 
     it('should create ImmutableAI instance', function () {
@@ -76,6 +77,45 @@ describe('immutable-ai', function () {
         var ret = ai.module.bar.bam()
         // check return value
         assert.strictEqual(ret, 'baz')
+    })
+
+    it('should do http get', function () {
+        // set mock immutable http client
+        ImmutableAI.immutableHttpClient({
+            get: function (url, options, testSession) {
+                // check args
+                assert.strictEqual(url, 'foo')
+                assert.strictEqual(options, 'bar')
+                assert.deepEqual(testSession, session)
+
+                return 'foo'
+            }
+        })
+        // create ImmutableAI instance
+        var ai = ImmutableAI({session: session})
+        // do http get
+        var ret = ai.http.get('foo', 'bar')
+        // check response
+        assert.strictEqual(ret, 'foo')
+    })
+
+    it('should do http request', function () {
+        // set mock immutable http client
+        ImmutableAI.immutableHttpClient({
+            request: function (options, testSession) {
+                // check args
+                assert.strictEqual(options, 'foo')
+                assert.deepEqual(testSession, session)
+
+                return 'foo'
+            }
+        })
+        // create ImmutableAI instance
+        var ai = ImmutableAI({session: session})
+        // do http get
+        var ret = ai.http.request('foo')
+        // check response
+        assert.strictEqual(ret, 'foo')
     })
 
     it('should allow custom local namespaces', function () {
@@ -158,5 +198,25 @@ describe('immutable-ai', function () {
         assert.throws(function () {
             ai.module.foo.bar()
         }, 'FOOBAR')
+    })
+
+    it('should throw error on missing immutable http client', function () {
+        // clear immutable http client
+        ImmutableAI.immutableHttpClient(undefined)
+        // create ImmutableAI instance
+        var ai = ImmutableAI({session: session})
+        // call ai - should throw error
+        assert.throws(function () {
+            ai.http.get()
+        }, 'ImmutableAI configuration error: immutableHttpClient required')
+    })
+
+    it('should throw error on invalid http method', function () {
+        // create ImmutableAI instance
+        var ai = ImmutableAI({session: session})
+        // call ai - should throw error
+        assert.throws(function () {
+            ai.http.foo()
+        }, 'InnutableAI error: invalid method foo for ImmutableHttpClient')
     })
 })
