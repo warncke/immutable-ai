@@ -1,13 +1,13 @@
 {
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
-    "if-defined": "1.0.9",
+    "if-defined": "1.0.10",
     "lodash": "4.17.4"
   },
   "description": "Alternative interface for immutable-core",
   "devDependencies": {
     "chai": "4.1.0",
-    "mocha": "3.4.2"
+    "mocha": "3.5.0"
   },
   "directories": {
     "test": "test"
@@ -22,5 +22,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.5.2"
+  "version": "0.5.3"
 }
