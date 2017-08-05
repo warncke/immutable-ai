@@ -6,7 +6,7 @@
   },
   "description": "Alternative interface for immutable-core",
   "devDependencies": {
-    "chai": "4.1.0",
+    "chai": "4.1.1",
     "mocha": "3.5.0"
   },
   "directories": {
@@ -22,5 +22,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.5.3"
+  "version": "0.5.4"
 }
