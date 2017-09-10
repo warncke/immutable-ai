@@ -25,15 +25,15 @@ with [immutable-app](https://www.npmjs.com/package/immutable-app) and
     ImmutabelAI.immutableCoreModel(ImmutableCoreModel)
     ImmutableAI.immutableHttpClient(ImmutableHttpClient)
 
-    immutable.module('barModule', {
+    ImmutableCore.module('barModule', {
         bar: function (args) {
             ...
         }
     })
 
-    immutable.module('fooModule', {})
+    ImmutableCore.module('fooModule', {})
 
-    immutable.method('fooModule.foo', function (args) {
+    ImmutableCore.method('fooModule.foo', function (args) {
         // create new instance from args
         var ai = ImmutableAI(args)
         // call barModule.bar using Immutable AI
@@ -52,7 +52,7 @@ session objects between Immutable method calls.
 
 ## Using Immutable AI by default
 
-    immutable.method('fooModule.foo', function (args) {
+    ImmutableCore.method('fooModule.foo', function (args) {
         this.module.bar.bar()
     })
 
@@ -130,6 +130,27 @@ the current session object will be added if it is not set in the arguments.
 
 The session for the instance can be access via `ai.session`.
 
+## Accessing module data
+
+    ai.module.foo.data = {}
+
+    var foo = ai.module.foo.data
+
+The data for any module can be accessed from the ai instance via the module
+name.
+
+## Accessing module data in method call
+
+    ImmutableCore.method('fooModule.foo', function (args) {
+        // set data for fooModule
+        this.data = {foo: true}
+        // get data for fooModule
+        var foo = this.data.foo
+    })
+
+In the context of a method the module data for the module that the method
+belongs to can be accessed via `this.data`.
+    
 ## Invalid calling patterns
 
     // create a new ImmutableAI instance
