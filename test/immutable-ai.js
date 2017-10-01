@@ -219,4 +219,27 @@ describe('immutable-ai', function () {
             ai.http.foo()
         }, 'InnutableAI error: invalid method foo for ImmutableHttpClient')
     })
+
+    it('should call component new with session', async function () {
+        // set mock immutableCore
+        ImmutableAI.immutableCoreComponent({
+            component: function (name) {
+                assert.strictEqual(name, 'foo')
+                return {
+                    new: function (args) {
+                        // check session
+                        assert.deepEqual(args, {foo: true, session: session})
+                        // return value
+                        return {foo: true}
+                    }
+                }
+            }
+        })
+        // create ImmutableAI instance
+        var ai = ImmutableAI({session: session})
+        // call bar method in fooModule
+        var ret = ai.component.foo.new({foo: true})
+        // check return value
+        assert.deepEqual(ret, {foo: true})
+    })
 })
