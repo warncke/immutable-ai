@@ -4,15 +4,18 @@ Immutable AI provides a convenient object oriented facade for Immutable modules
 that are functional by design and require manually passing a session object
 between calls.
 
-Immutable AI can be used to call
-[Immutable Core](https://www.npmjs.com/package/immutable-core) methods, perform
-[Immutable Core Model](https://www.npmjs.com/package/immutable-core-model)
-queries and make HTTP requests using
-[Immutable HTTP Client](https://www.npmjs.com/package/immutable-http-client).
+Immutable AI supports:
 
-Immutable AI can be used directly, as demonstrated here, but it is integrated
-with [immutable-app](https://www.npmjs.com/package/immutable-app) and
-[immutable-core](https://www.npmjs.com/package/immutable-core) by default.
+* [Immutable Core](https://www.npmjs.com/package/immutable-core)
+* [Immutable Core Component](https://www.npmjs.com/package/immutable-core-component)
+* [Immutable Core Model](https://www.npmjs.com/package/immutable-core-model)
+* [Immutable Core Task](https://www.npmjs.com/package/immutable-core-task)
+* [Immutable HTTP Client](https://www.npmjs.com/package/immutable-http-client)
+
+Immutable AI is integrated with
+[immutable-app](https://www.npmjs.com/package/immutable-app) and
+Immutable Core by default so the manual configuration documented here should not
+need to be used for most cases.
 
 ## Creating a new Immutable AI instance
 
@@ -150,6 +153,14 @@ name.
 
 In the context of a method the module data for the module that the method
 belongs to can be accessed via `this.data`.
+
+## Create a new ImmutableCoreComponentInstance
+
+    ai.component.foo.new({...})
+
+## Create a new ImmutableCoreTaskInstance
+
+    ai.task.foo.new({...})
     
 ## Invalid calling patterns
 
