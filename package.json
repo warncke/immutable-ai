@@ -2,18 +2,15 @@
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
     "if-defined": "1.0.18",
-    "lodash": "4.17.11"
+    "lodash": "4.17.21"
   },
   "description": "Alternative interface for immutable-core",
   "devDependencies": {
-    "chai": "4.2.0",
-    "mocha": "5.2.0"
+    "chai": "4.3.10",
+    "mocha": "10.2.0"
   },
   "directories": {
     "test": "test"
-  },
-  "engines": {
-    "node": ">=7.6.0"
   },
   "license": "MIT",
   "main": "lib/immutable-ai.js",
@@ -22,5 +19,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.8.3"
+  "version": "0.9.0"
 }
